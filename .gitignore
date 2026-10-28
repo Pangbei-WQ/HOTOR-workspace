@@ -1,0 +1,67 @@
+# ============================================================
+# HOTOR-workspace / Obsidian LLM Wiki
+# 策略：放行笔记(.md) + 代码与配置，忽略编辑器/AI 运行时与大文件
+# （与参考仓库 My-Personal-Obsidian 的"只推 .md"不同：
+#   本库同时是工作空间，需要托管脚本与配置文件）
+# ============================================================
+
+# ---------- Obsidian / AI 运行时（不进 Git） ----------
+.obsidian/
+.claude/
+.claudian/
+.trash/
+
+# ---------- WorkBuddy 运行时（保留 memory/ 日志） ----------
+.workbuddy/*
+!.workbuddy/memory/
+!.workbuddy/memory/**
+
+# ---------- 系统与编辑器 ----------
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/settings.json
+
+# ---------- 依赖与构建产物 ----------
+node_modules/
+dist/
+build/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---------- 大文件与二进制（不进 Git，放 raw/attachments/ 本地留存） ----------
+*.mp4
+*.mp3
+*.mov
+*.avi
+*.zip
+*.rar
+*.7z
+*.pdf
+*.pptx
+*.xlsx
+*.docx
+*.exe
+*.dll
+
+# ---------- 环境变量与密钥 ----------
+.env
+.env.*
+*.pem
+*.key
+
+# ---------- 账号密码（含明文口令，不进 Git / 不同步远端） ----------
+wiki/HOTOR业务/账号密码台账.md
+raw/知识文件归档/亚马逊运营/计划运营SOP课程存档/常用网站／工具清单.csv
+
+# ---------- 日志与缓存 ----------
+*.log
+tmp/
+temp/
+
+# ---------- 保留空目录 ----------
+!.gitkeep
