@@ -9,7 +9,7 @@ sources:
 # 7天用 WorkBuddy 搭建你的 AI 数字员工（抖音视频）
 
 > **状态**：unreviewed（LLM 采集，未经人工审核）
-> **最后更新**：2026-08-20
+> **最后更新**：2026-11-02
 > **来源**：抖音视频 [v.douyin.com/plonXx2bB2Y/](https://v.douyin.com/plonXx2bB2Y/)
 
 ---
@@ -208,7 +208,7 @@ sources:
 | agent.md（员工手册） | `AGENTS.md`（LLM Wiki 操作契约） |
 | raw 层（原始资料，只读） | `raw/`（文档/网页剪藏/attachments） |
 | wiki 层（知识制品，AI 维护） | `wiki/`（index.md + log.md + 领域页面） |
-| output 层（衍生创作） | （本 vault 尚未建立独立 `output/` 目录） |
+| output 层（衍生创作） | `outputs/`（成品库，2026-11-02 新建；权限模型与视频相反，见下方差异点） |
 | index.md（内容索引） | `wiki/index.md` |
 | log.md（操作日志） | `wiki/log.md` |
 | 启动协议（开工先读文件） | AGENTS.md 的 Ingest/Query/Lint 流程 |
@@ -216,7 +216,7 @@ sources:
 | 意图行为映射 | AGENTS.md「角色定义」与「诚实标记」原则 |
 | 3-6 个月复审 | wiki/log.md 的 Lint 健康检查 |
 
-> 💡 **LLM 推断**：本视频相当于 WorkBuddy 官方视角的"LLM Wiki 搭建教程"，与本 vault 已实践的 Karpathy LLM Wiki 架构互为印证。可关注的两个差异点：(1) 本 vault 尚未建 `output/` 衍生创作层，视频明确建议其存在（PPT/文章/画板归处）；(2) 视频强调"换模型后要检查旧规则是否限制新模型"，可作为 Lint 的一个检查维度。
+> 💡 **LLM 推断**：本视频相当于 WorkBuddy 官方视角的"LLM Wiki 搭建教程"，与本 vault 已实践的 Karpathy LLM Wiki 架构互为印证。两个差异点：(1) 本 vault 已于 2026-11-02 建立 `outputs/` 成品层，但权限模型与视频的 `output` 相反——视频的 output 是「用户创作层，AI 只读引用」，本库 outputs 是「交付物，人 + LLM 共管、AI 可写可改」，因为报告/模板/SOP 大量由 AI 产出（详见 [[outputs/README.md]]）；(2) 视频强调"换模型后要检查旧规则是否限制新模型"，可作为 Lint 的一个检查维度。
 
 ---
 
@@ -234,7 +234,7 @@ sources:
 - [ ] 人工审核本页内容（`unreviewed` → `reviewed`）
 - [ ] 获取视频精确时长、作者与发布信息（元数据未返回）
 - [ ] 核对 WorkBuddy 产品全名与官方文档（视频口播，未提供链接）
-- [ ] 可考虑：本 vault 是否要建立独立的 `output/` 衍生创作层（PPT/文章/画板归处），与视频的 raw/wiki/output 三层对齐
+- [x] 已建 `outputs/` 成品层（2026-11-02）：权限模型与视频 `output` 不同（本库 = 人 + LLM 共管、AI 可写；视频 = 用户创作、AI 只读），见「与本知识库的关联」差异点 (1)
 - [ ] 可考虑：把"规则冲突裁决顺序 + 模糊任务阈值"提炼为独立方法论页，与 AGENTS.md 设计对照
 
 ---

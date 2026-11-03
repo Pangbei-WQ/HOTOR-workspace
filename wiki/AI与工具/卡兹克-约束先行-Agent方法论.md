@@ -81,6 +81,7 @@ sources:
 - [[wiki/AI与工具/卡兹克-目标七问-Leader.skill]] — Harness 本质就是约束；目标七问中的"边界/反作弊"就是给目标加约束
 - [[AGENTS.md]] — 本库的操作契约，正是"约束先行"的落地实践
 - [[wiki/工作方法/LLM-Wiki知识库搭建指南]] — raw + wiki + AGENTS.md 复现手册
+- [[wiki/工作方法/钢人论证（steelman）]] — 本页「不要谄媚」正是钢人论证生效的前提（反谄媚 ↔ 钢人化）
 - [[wiki/AI与工具/WorkBuddy搭建AI数字员工-抖音视频]] — agent.md 员工手册也是约束
 
 ## 待补充

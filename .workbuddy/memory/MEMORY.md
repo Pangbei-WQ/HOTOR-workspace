@@ -30,3 +30,9 @@
 - 直连 GitHub 的 git/curl 曾出现 schannel TLS 握手失败；可用时优先 `git ls-remote` 探测，再 `curl -o x.zip` 下载 codeload zip 解压（比 `git clone` 稳定）
 - 本机无 `gh` CLI；网页抓取通道（WebFetch）可用但结果有缓存
 - Read 工具需 Windows 真实路径，Git Bash 的 `/tmp` 对应 `C:/Users/HDKJ/AppData/Local/Temp`
+
+## 清理规则（2026-11-02 升级，全局）
+
+- **过程产物用完即删**：出结果产物的同时当场删光中间产物（临时脚本/导出副本/调试日志等），不等「任务结束」、不主动询问
+- 边界：归档进 `raw/` 的正式源文件、wiki/、outputs/ 成品属结果产物，不算过程产物；`.workbuddy/` 永不删
+- 纪律：删前列清单、逐文件精确删、删后复核报残留数；禁递归删个人目录

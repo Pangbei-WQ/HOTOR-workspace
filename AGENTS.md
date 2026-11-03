@@ -47,13 +47,15 @@ HOTOR-workspace/                 # Vault 根目录（= Git 仓库根）
 │   │   └── [主题]/              #     按主题归档的长文、文档、转录
 │   ├── 网页剪藏/                #   🌐 浏览器剪藏（一篇文章一个文件夹，可含 images/）
 │   └── attachments/             #   🖼️ 图片等附件
-└── wiki/                        # 📚 LLM 维护的知识库
+├── wiki/                        # 📚 LLM 维护的知识库
     ├── index.md                 #   知识目录（每次 Ingest 后更新）
     ├── log.md                   #   操作日志（append-only，最新在上）
     ├── HOTOR业务/               #   🏢 业务半区：产品 / 项目 / 流程制度 / 客户合作 / 供应链
     ├── 个人成长/                #   🌱 个人半区：学习 / 想法 / 日记
     ├── AI与工具/                #   🤖 工具、Prompt、Agent 方法论
     └── 工作方法/                #   🔧 流程、规范、可复用方法
+└── outputs/                     # 📦 成品库：交付物（人 + LLM 共管）
+    └── README.md                #   生产逻辑、三层边界、状态机（约束先行）
 ```
 
 ### 各目录权限
@@ -65,8 +67,11 @@ HOTOR-workspace/                 # Vault 根目录（= Git 仓库根）
 | `raw/知识文件归档/Daily/` | ✅ | ❌ | ❌ | ❌ | 只读。日记是人工私人空间 |
 | `wiki/` | ✅ | ✅ | ✅ | ✅ | LLM 全权维护。`index.md` 和 `log.md` 每次操作必更新 |
 | `wiki/log.md` | ✅ | ✅ | ❌ | ❌ | append-only，历史记录不得改写 |
+| `outputs/` | ✅ | ✅ | ✅ | ⚠️ | 成品库（交付物），人 + LLM 共管。`README.md` 记录生产逻辑与状态机；删除先报告、人工确认后执行 |
 | `AGENTS.md` | ✅ | ⚠️ | ⚠️ | ❌ | 修改前需人工确认 |
 | `.workbuddy/` | ✅ | ⚠️ | ❌ | ❌ | WorkBuddy 运行时目录。`memory/` 可追加日志；其余不得改动 |
+
+**三层模型**：`raw/`（原料，输入）→ `wiki/`（知识，连接）→ `outputs/`（成品，交付）。成品判据——问一句「这文件以后是**查**还是**用**」：查进 `wiki/`，用进 `outputs/`。成品必须带 `sources` 追溯来源，状态机 `draft → final → archived`。详见 `outputs/README.md`。
 
 ---
 
@@ -331,3 +336,4 @@ sources:
 |------|------|------|
 | 2026-10-27 | v1.0 | 初始版本。基于参考仓库 `Pangbei-WQ/My-Personal-Obsidian` 的 AGENTS.md v1.3 移植，沿用 Karpathy LLM Wiki 架构。目录路径同步至本库（vault 根 = 工作空间根）；领域调整为 HOTOR业务 / 个人成长 / AI与工具 / 工作方法，对应「业务 + 个人混合」定位 |
 | 2026-10-28 | v1.1 | 收件箱简化为无子分类的空文件夹（移除 链接/语音/杂项 与 README.md），六步处理流程内联于 §4 步骤 0，处理规则不变；桌面已建收件箱快捷方式 |
+| 2026-11-02 | v1.2 | 新增第三层 `outputs/`（成品库，交付物）：§2 目录树 + 权限表补充「三层模型（raw 原料 → wiki 知识 → outputs 成品）」，生产逻辑落于 `outputs/README.md`；成品判据「查 vs 用」、状态机 draft→final→archived、sources 追溯 |
