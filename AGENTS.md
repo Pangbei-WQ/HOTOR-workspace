@@ -47,6 +47,8 @@ HOTOR-workspace/                 # Vault 根目录（= Git 仓库根）
 │   │   └── [主题]/              #     按主题归档的长文、文档、转录
 │   ├── 网页剪藏/                #   🌐 浏览器剪藏（一篇文章一个文件夹，可含 images/）
 │   └── attachments/             #   🖼️ 图片等附件
+├── 原件存档/                    # 🗄️ 非文本原件区（xlsx/pdf…，带版本号，与 raw 同级，GitHub 可见）
+│   └── README.md               #   存放规则说明
 ├── wiki/                        # 📚 LLM 维护的知识库
     ├── index.md                 #   知识目录（每次 Ingest 后更新）
     ├── log.md                   #   操作日志（append-only，最新在上）
@@ -68,10 +70,11 @@ HOTOR-workspace/                 # Vault 根目录（= Git 仓库根）
 | `wiki/` | ✅ | ✅ | ✅ | ✅ | LLM 全权维护。`index.md` 和 `log.md` 每次操作必更新 |
 | `wiki/log.md` | ✅ | ✅ | ❌ | ❌ | append-only，历史记录不得改写 |
 | `outputs/` | ✅ | ✅ | ✅ | ⚠️ | 成品库（交付物），人 + LLM 共管。`README.md` 记录生产逻辑与状态机；删除先报告、人工确认后执行 |
+| `原件存档/` | ✅ | ✅ | ⚠️ | ⚠️ | 非文本原件区。更新=新增版本文件（不覆盖）；修改/删除历史版本需人工确认；更新后 wiki sources 同步 |
 | `AGENTS.md` | ✅ | ⚠️ | ⚠️ | ❌ | 修改前需人工确认 |
 | `.workbuddy/` | ✅ | ⚠️ | ❌ | ❌ | WorkBuddy 运行时目录。`memory/` 可追加日志；其余不得改动 |
 
-**三层模型**：`raw/`（原料，输入）→ `wiki/`（知识，连接）→ `outputs/`（成品，交付）。成品判据——问一句「这文件以后是**查**还是**用**」：查进 `wiki/`，用进 `outputs/`。成品必须带 `sources` 追溯来源，状态机 `draft → final → archived`。详见 `outputs/README.md`。
+**三层模型**：`raw/`（原料，乱）→ `wiki/`（知识，精华关联）→ `outputs/`（成品，理顺展开的交付物）。判据「查进 wiki、用进 outputs」；outputs 只从 `raw/` 理顺（不新增事实，新增必标来源），与 wiki 弱关联；状态机 `draft → final → archived`，`final` 仅人工点头。详见 `outputs/README.md`。另有 `原件存档/`：与 raw 同级的二进制原件区（raw 文本存档对应的 xlsx/pdf 等），只增版本不改历史。
 
 ---
 
@@ -337,3 +340,4 @@ sources:
 | 2026-10-27 | v1.0 | 初始版本。基于参考仓库 `Pangbei-WQ/My-Personal-Obsidian` 的 AGENTS.md v1.3 移植，沿用 Karpathy LLM Wiki 架构。目录路径同步至本库（vault 根 = 工作空间根）；领域调整为 HOTOR业务 / 个人成长 / AI与工具 / 工作方法，对应「业务 + 个人混合」定位 |
 | 2026-10-28 | v1.1 | 收件箱简化为无子分类的空文件夹（移除 链接/语音/杂项 与 README.md），六步处理流程内联于 §4 步骤 0，处理规则不变；桌面已建收件箱快捷方式 |
 | 2026-11-02 | v1.2 | 新增第三层 `outputs/`（成品库，交付物）：§2 目录树 + 权限表补充「三层模型（raw 原料 → wiki 知识 → outputs 成品）」，生产逻辑落于 `outputs/README.md`；成品判据「查 vs 用」、状态机 draft→final→archived、sources 追溯 |
+| 2026-11-03 | v1.3 | 成品层生产逻辑定稿：outputs 来源收敛为单一 `raw/`（理顺展开，不新增事实；新增必标来源），砍掉「从 wiki 提炼」路径；触发改为「只提醒、不周期自动生成」；质量两道闸（AI 自检 + 人工终审），`final` 仅人工点头；与 wiki 弱关联。详见 `outputs/README.md` |
