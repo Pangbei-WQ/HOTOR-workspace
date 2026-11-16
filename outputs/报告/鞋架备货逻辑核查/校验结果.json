@@ -1,0 +1,184 @@
+{
+  "scope": "Independent arithmetic and offline audit guards; no Google or Apps Script execution",
+  "checks": [
+    {
+      "name": "source_unchanged:跨境订货在线表.xlsx",
+      "actual": "bd254b808ea0217b5c9136d05dd965e3c47c045befbb660bcdbc7f8a35011c61",
+      "expected": "bd254b808ea0217b5c9136d05dd965e3c47c045befbb660bcdbc7f8a35011c61",
+      "note": "Original bytes, not an exported copy",
+      "passed": true
+    },
+    {
+      "name": "archive_matches:跨境订货在线表.xlsx",
+      "actual": "bd254b808ea0217b5c9136d05dd965e3c47c045befbb660bcdbc7f8a35011c61",
+      "expected": "bd254b808ea0217b5c9136d05dd965e3c47c045befbb660bcdbc7f8a35011c61",
+      "note": "Versioned copy",
+      "passed": true
+    },
+    {
+      "name": "source_unchanged:跨境订货表汇总测算底表.xlsx",
+      "actual": "b51b8fce4f9bca42b8314564b8cbf8da9c7f9b8f24cdfe77edacf24d754d38f7",
+      "expected": "b51b8fce4f9bca42b8314564b8cbf8da9c7f9b8f24cdfe77edacf24d754d38f7",
+      "note": "Original bytes, not an exported copy",
+      "passed": true
+    },
+    {
+      "name": "archive_matches:跨境订货表汇总测算底表.xlsx",
+      "actual": "b51b8fce4f9bca42b8314564b8cbf8da9c7f9b8f24cdfe77edacf24d754d38f7",
+      "expected": "b51b8fce4f9bca42b8314564b8cbf8da9c7f9b8f24cdfe77edacf24d754d38f7",
+      "note": "Versioned copy",
+      "passed": true
+    },
+    {
+      "name": "source_unchanged:下单盘点-工具表-伟卿_v1_20261106.xlsx",
+      "actual": "236494305923424574c39449619770cf9a69d92efa1c8e452bacb3b08a8ccd3f",
+      "expected": "236494305923424574c39449619770cf9a69d92efa1c8e452bacb3b08a8ccd3f",
+      "note": "Original bytes, not an exported copy",
+      "passed": true
+    },
+    {
+      "name": "real_shoe_SKU",
+      "actual": "US4122BL",
+      "expected": "US4122BL",
+      "note": "Actual saved source SKU",
+      "passed": true
+    },
+    {
+      "name": "real_purchase_boxes",
+      "actual": 938,
+      "expected": 938,
+      "note": "ceil(15000/16)",
+      "passed": true
+    },
+    {
+      "name": "real_purchase_quantity",
+      "actual": 15008.0,
+      "expected": 15008.0,
+      "note": "15008 matches saved X6; independent arithmetic, not Google recalc",
+      "passed": true
+    },
+    {
+      "name": "real_purchase_box_cache",
+      "actual": 938,
+      "expected": 938.0,
+      "note": "938 matches saved U6",
+      "passed": true
+    },
+    {
+      "name": "real_shipment_approved",
+      "actual": 15000.0,
+      "expected": 15000.0,
+      "note": "Approval quantity only; actual shipment evidence absent",
+      "passed": true
+    },
+    {
+      "name": "real_shipment_batch_unavailable",
+      "actual": "#REF!",
+      "expected": "#REF!",
+      "note": "Do not coerce into zero",
+      "passed": true
+    },
+    {
+      "name": "attachment_real_recommended_boxes",
+      "actual": 20,
+      "expected": 20.0,
+      "note": "K0301058: ceil(((7+9)*6-0)/5)=20 boxes",
+      "passed": true
+    },
+    {
+      "name": "attachment_not_executed",
+      "actual": 0.0,
+      "expected": 0.0,
+      "note": "CA=BZ*BX, BZ blank; recommended 20 boxes is not committed quantity",
+      "passed": true
+    },
+    {
+      "name": "same_workbook_external_source",
+      "actual": true,
+      "expected": true,
+      "note": "OOXML external-link target establishes two-file relationship",
+      "passed": true
+    },
+    {
+      "name": "order_window_days",
+      "actual": 14,
+      "expected": 14,
+      "note": "W uses >=O and <O+14",
+      "passed": true
+    },
+    {
+      "name": "ship_window_days",
+      "actual": 15,
+      "expected": 15,
+      "note": "AF includes both endpoints",
+      "passed": true
+    },
+    {
+      "name": "MOQ_nearest_can_underfill",
+      "actual": 500,
+      "expected": 500,
+      "note": "W: ratio>=1 uses ROUND, not universal CEILING; hypothetical 740 demand",
+      "passed": true
+    },
+    {
+      "name": "MOQ_below_minimum",
+      "actual": 500,
+      "expected": 500,
+      "note": "W: ratio<1 uses CEILING; hypothetical 200 demand",
+      "passed": true
+    },
+    {
+      "name": "safety_equal_W_trigger",
+      "actual": false,
+      "expected": false,
+      "note": "W tests V<I strictly",
+      "passed": true
+    },
+    {
+      "name": "safety_equal_AG",
+      "actual": 150,
+      "expected": 150,
+      "note": "AG tests AC>I; equality still returns AF; hypothetical inputs",
+      "passed": true
+    },
+    {
+      "name": "arrival_anchor_sunday",
+      "actual": 6,
+      "expected": 6,
+      "note": "Saved O4 and -WEEKDAY(...,2)+7: Sunday, not Monday",
+      "passed": true
+    },
+    {
+      "name": "missing_source",
+      "expected_failure": "UNAVAILABLE 发货汇总!T3=#REF!",
+      "passed": true,
+      "scope": "Offline audit guard, NOT a test of inaccessible Apps Script"
+    },
+    {
+      "name": "zero_box",
+      "expected_failure": "MISSING_OR_ZERO_BOX_SIZE",
+      "passed": true,
+      "scope": "Offline audit guard, NOT a test of inaccessible Apps Script"
+    },
+    {
+      "name": "duplicate_po",
+      "expected_failure": "DUPLICATE_SKU_PO",
+      "passed": true,
+      "scope": "Offline audit guard, NOT a test of inaccessible Apps Script"
+    },
+    {
+      "name": "restored_valid_box",
+      "actual": 2,
+      "expected": 2,
+      "note": "GREEN after zero-box injection",
+      "passed": true
+    },
+    {
+      "name": "restored_unique_po",
+      "actual": true,
+      "expected": true,
+      "note": "Audit only: actual split-PO script behavior remains unverified",
+      "passed": true
+    }
+  ]
+}
